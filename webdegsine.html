@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ultra Stunning Project Card</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Audiowide&family=Exo+2:wght@300;500;700&display=swap");
+
+      :root {
+        --primary-color: #00ffff;
+        --secondary-color: #ff00ff;
+        --bg-color: #0a0a0a;
+        --text-color: #ffffff;
+      }
+
+      body,
+      html {
+        padding: 10;
+        font-family: "Exo 2", sans-serif;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background: var(--bg-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+
+      .background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+            circle at 20% 30%,
+            rgba(0, 255, 255, 0.2) 0%,
+            transparent 30%
+          ),
+          radial-gradient(
+            circle at 80% 70%,
+            rgba(255, 0, 255, 0.2) 0%,
+            transparent 30%
+          );
+        filter: blur(50px);
+        z-index: -1;
+      }
+
+      .card {
+        width: 380px;
+        background: rgba(20, 20, 20, 0.8);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 0 40px rgba(0, 255, 255, 0.3);
+        transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        backdrop-filter: blur(10px);
+        transform-style: preserve-3d;
+        perspective: 1000px;
+      }
+
+      .card:hover {
+        transform: translateY(-10px) rotateX(5deg) rotateY(-5deg) scale(1.05);
+        box-shadow: 0 20px 50px rgba(0, 255, 255, 0.5),
+          0 0 60px rgba(255, 0, 255, 0.3);
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(
+          45deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        z-index: -1;
+        filter: blur(20px);
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .card:hover::before {
+        opacity: 1;
+      }
+
+      .card-image {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        transition: all 0.5s ease;
+        position: relative;
+      }
+
+      .card:hover .card-image {
+        transform: scale(1.1) translateZ(20px);
+        filter: brightness(1.2) contrast(1.2) saturate(1.2);
+      }
+
+      .card-content {
+        padding: 30px;
+        position: relative;
+      }
+
+      .card-title {
+        font-family: "Audiowide", cursive;
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: var(--primary-color);
+        text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+        letter-spacing: 1px;
+      }
+
+      .card-description {
+        font-size: 16px;
+        color: var(--text-color);
+        margin-bottom: 25px;
+        line-height: 1.6;
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+      }
+
+      .card-languages {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 30px;
+      }
+
+      .language-tag {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 14px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 30px;
+        font-size: 14px;
+        color: var(--text-color);
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .language-tag:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 5px 15px rgba(0, 255, 255, 0.4);
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .language-tag i {
+        font-size: 18px;
+      }
+
+      .html-tag {
+        color: #e44d26;
+      }
+      .css-tag {
+        color: #264de4;
+      }
+      .js-tag {
+        color: #f0db4f;
+      }
+
+      .card-link {
+        display: inline-block;
+        padding: 12px 30px;
+        background: linear-gradient(
+          45deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        color: var(--bg-color);
+        text-decoration: none;
+        border-radius: 30px;
+        transition: all 0.3s ease;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+      }
+
+      .card-link:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 10px 20px rgba(0, 255, 255, 0.4),
+          0 0 30px rgba(255, 0, 255, 0.3);
+        color: var(--text-color);
+      }
+
+      .card-link::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          45deg,
+          var(--secondary-color),
+          var(--primary-color)
+        );
+        z-index: -1;
+        transition: transform 0.5s ease;
+        transform: scaleX(0);
+        transform-origin: right;
+      }
+
+      .card-link:hover::before {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+
+      @keyframes glow {
+        0%,
+        100% {
+          text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+        }
+        50% {
+          text-shadow: 0 0 20px rgba(0, 255, 255, 1),
+            0 0 30px rgba(0, 255, 255, 0.5);
+        }
+      }
+
+      .card-title {
+        animation: glow 3s infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="background"></div>
+    <div class="card animate__animated animate__fadeInUp">
+      <img
+        src="./assets/img/Screenshot 2024-08-04 161934.png"
+        alt="Project Cover"
+        class="card-image"
+      />
+      <div class="card-content">
+        <h2 class="card-title animate__animated animate__fadeInDown">
+          beautyandcare website
+        </h2>
+        <p class="card-description animate__animated animate__fadeIn">
+          Creating a beauty care products website using React and Tailwind CSS
+          is a fantastic idea.. 😊🌸
+        </p>
+        <div class="card-languages animate__animated animate__fadeIn">
+          <span class="language-tag html-tag"
+            ><i class="fab fa-html5"></i> HTML5</span
+          >
+          <span class="language-tag css-tag"
+            ><i class="fab fa-css3-alt"></i> CSS3</span
+          >
+          <span class="language-tag js-tag"
+            ><i class="fab fa-js"></i> JavaScript</span
+          >
+        </div>
+        <a
+          href="https://github.com/your-username/quantum-nexus"
+          class="card-link"
+        >
+          <i class="fab fa-github"></i> Explore on GitHub
+        </a>
+      </div>
+    </div>
+  </body>
+</html>
